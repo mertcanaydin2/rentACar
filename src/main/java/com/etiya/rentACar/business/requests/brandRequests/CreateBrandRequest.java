@@ -17,5 +17,3 @@ public class CreateBrandRequest {
     private String name;
 
 }
-
-// Bir veritabanında değişiklik yapma işlemi create için ayrı delete için ayrı update için ayrı olmalı
