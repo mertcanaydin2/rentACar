@@ -13,4 +13,6 @@ public interface MaintenanceService {
 
     List<ListMaintenanceDto> getAll();
 
+    List<ListMaintenanceDto> getByCarId(int id);
+
 }

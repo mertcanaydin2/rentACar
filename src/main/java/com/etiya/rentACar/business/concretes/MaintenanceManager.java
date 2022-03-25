@@ -45,6 +45,16 @@ public class MaintenanceManager implements MaintenanceService {
         return response;
     }
 
+    @Override
+    public List<ListMaintenanceDto> getByCarId(int id) {
+
+        List<Maintenance> maintenances= this.maintenanceDao.findAll();
+        List<ListMaintenanceDto> response = maintenances.stream().map(maintenance->this.modelMapperService.forDto().map(maintenance, ListMaintenanceDto.class))
+                .filter(x -> x.getCarId() == id)
+                .collect(Collectors.toList());
+        return response;
+    }
+
     public void checkIfCarInMaintenance(int carId){
 
 
