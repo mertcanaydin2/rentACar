@@ -3,6 +3,7 @@ package com.etiya.rentACar.business.concretes;
 import com.etiya.rentACar.business.abstracts.CarService;
 import com.etiya.rentACar.business.requests.carRequests.CreateCarRequest;
 import com.etiya.rentACar.business.responses.carResponses.ListCarDto;
+import com.etiya.rentACar.core.crossCuttingConcerns.exceptionHandling.BusinessException;
 import com.etiya.rentACar.core.utilities.mapping.ModelMapperService;
 import com.etiya.rentACar.dataAccess.abstracts.CarDao;
 import com.etiya.rentACar.entities.Car;
@@ -26,8 +27,7 @@ public class CarManager implements CarService {
     }
 
     @Override
-    public void add(CreateCarRequest createCarRequest) {
-
+    public void add(CreateCarRequest createCarRequest)  {
         Car car = this.modelMapperService.forRequest().map(createCarRequest,Car.class);
 
         this.carDao.save(car);

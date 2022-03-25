@@ -3,6 +3,7 @@ package com.etiya.rentACar.business.concretes;
 import com.etiya.rentACar.business.requests.brandRequests.CreateBrandRequest;
 import com.etiya.rentACar.business.responses.brandResponses.ListBrandDto;
 import com.etiya.rentACar.core.utilities.mapping.ModelMapperService;
+import com.etiya.rentACar.entities.Color;
 import org.springframework.stereotype.Service;
 
 import com.etiya.rentACar.business.abstracts.BrandService;
@@ -24,7 +25,7 @@ public class BrandManager implements BrandService {
         this.modelMapperService = modelMapperService;
     }
 
-    @Override
+  /*  @Override
     public void add(CreateBrandRequest createBrandRequest) {
         createBrandRequest.setName(createBrandRequest.getName().toLowerCase());
         if (!(brandDao.existsBrandByName(createBrandRequest.getName().toLowerCase()))) {
@@ -34,6 +35,16 @@ public class BrandManager implements BrandService {
         else{
             throw new RuntimeException("Bu marka daha önce kaydedilmiş");
         }
+    }*/
+
+    @Override
+    public void add(CreateBrandRequest createBrandRequest) {
+        String brandName = createBrandRequest.getName().toLowerCase(Locale.ROOT);
+        checkIfBrandExists(brandName);
+        createBrandRequest.setName(brandName);
+
+        Brand brand = this.modelMapperService.forRequest().map(createBrandRequest,Brand.class);
+        this.brandDao.save(brand);
     }
 
     @Override
@@ -45,4 +56,12 @@ public class BrandManager implements BrandService {
                 .collect(Collectors.toList());
         return response;
     }
+
+    private void checkIfBrandExists(String brandName){
+        if(brandDao.existsBrandByName(brandName)){
+            throw new RuntimeException("Bu renk daha önce kaydedilmiştir. ");
+        }
+    }
+
+
 }

@@ -3,6 +3,7 @@ package com.etiya.rentACar.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.jboss.jandex.Main;
 
 import javax.persistence.*;
 import java.util.List;
@@ -37,6 +38,9 @@ public class Car {
 
     @OneToMany(mappedBy = "car")
     private List<Damage> damage;
+
+    @OneToMany(mappedBy = "car")
+    private List<Maintenance> maintenance;
 
 
 }

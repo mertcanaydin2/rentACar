@@ -13,6 +13,7 @@ import com.etiya.rentACar.entities.Damage;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,14 +26,22 @@ public class ColorManager implements ColorService {
         this.modelMapperService = modelMapperService;
     }
     @Override
-    public void add(CreateColorRequest createColorRequest) {
-        createColorRequest.setName(createColorRequest.getName().toLowerCase());
-        if (!colorDao.existsColorByName(createColorRequest.getName().toLowerCase())) {
+    public void add(CreateColorRequest createColorRequest){
+        String colorName = createColorRequest.getName().toLowerCase();
+        checkIfColorExists(colorName);
+        createColorRequest.setName(colorName);
+
+        Color color = this.modelMapperService.forRequest().map(createColorRequest,Color.class);
+        this.colorDao.save(color);
+
+
+
+        /*if (!colorDao.existsColorByName(createColorRequest.getName().toLowerCase())) {
             Color color = this.modelMapperService.forRequest().map(createColorRequest, Color.class);
             this.colorDao.save(color);
         } else {
             throw new RuntimeException("Bu renk daha önce kaydedilmiş");
-        }
+        }*/
     }
 
     @Override
@@ -44,6 +53,13 @@ public class ColorManager implements ColorService {
                 .map(color, ListColorDto.class))
                 .collect(Collectors.toList());
         return response;
+    }
+
+
+    private void checkIfColorExists(String colorName){
+        if (colorDao.existsColorByName(colorName)){
+            throw new RuntimeException("Bu renk daha önce kaydedilmiştir. ");
+        }
     }
 }
 

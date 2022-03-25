@@ -13,8 +13,6 @@ import java.util.List;
 public class DamagesController {
 
     private DamageService damageService;
-    private CarService carService;
-    private CarsController carsController;
 
     public DamagesController(DamageService damageService) {
         this.damageService = damageService;
