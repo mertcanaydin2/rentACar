@@ -1,4 +1,5 @@
-package com.etiya.rentACar.business.requests.maintenanceRequests;
+package com.etiya.rentACar.business.requests.statementRequests;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -8,14 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateMaintenanceRequest {
+public class CreateStatementRequest {
     @JsonIgnore
     private int id;
 
-    private String dateAdded;
-    private String dateReturned;
-    private int statementId;
-    private int carId;
-
-
+    private String name;
 }

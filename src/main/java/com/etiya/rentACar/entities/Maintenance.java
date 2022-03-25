@@ -26,13 +26,14 @@ public class Maintenance {
     @Column(name = "date_returned")
     private String dateReturned;
 
-    @Column(name = "statement")
-    private String statement;
-
 
     @ManyToOne
     @JoinColumn(name = "car_id")
     private Car car;
+
+    @ManyToOne
+    @JoinColumn(name = "statement_id")
+    private Statement statement;
 
 
 

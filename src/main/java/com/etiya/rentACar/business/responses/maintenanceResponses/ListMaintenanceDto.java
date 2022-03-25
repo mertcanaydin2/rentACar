@@ -13,7 +13,8 @@ public class ListMaintenanceDto {
     private int id;
     private String dateAdded;
     private String dateReturned;
-    private String statement;
     private int carId;
     private String carDescription;
+    private int statementId;
+    private String statementName;
 }

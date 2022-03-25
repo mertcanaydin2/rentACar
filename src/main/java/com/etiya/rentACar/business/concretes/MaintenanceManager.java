@@ -2,15 +2,17 @@ package com.etiya.rentACar.business.concretes;
 
 import com.etiya.rentACar.business.abstracts.MaintenanceService;
 import com.etiya.rentACar.business.requests.maintenanceRequests.CreateMaintenanceRequest;
+import com.etiya.rentACar.business.requests.statementRequests.CreateStatementRequest;
 import com.etiya.rentACar.business.responses.maintenanceResponses.ListMaintenanceDto;
 import com.etiya.rentACar.core.utilities.mapping.ModelMapperService;
 import com.etiya.rentACar.dataAccess.abstracts.MaintenanceDao;
+import com.etiya.rentACar.dataAccess.abstracts.StatementDao;
 import com.etiya.rentACar.entities.Maintenance;
+import com.etiya.rentACar.entities.Statement;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -32,6 +34,7 @@ public class MaintenanceManager implements MaintenanceService {
     public void add(CreateMaintenanceRequest createMaintenanceRequest) throws ParseException {
         checkIfCarInMaintenance(createMaintenanceRequest.getCarId());
 
+        setMaintenanceStatement(createMaintenanceRequest);
         checkIfCarAvaliable(createMaintenanceRequest.getDateAdded(), createMaintenanceRequest.getDateReturned(), createMaintenanceRequest.getCarId());
         Maintenance maintenance = this.modelMapperService.forRequest().map(createMaintenanceRequest, Maintenance.class);
         this.maintenanceDao.save(maintenance);
@@ -78,6 +81,7 @@ public class MaintenanceManager implements MaintenanceService {
         if(newDateAdded.before(dateToday) && newDateReturned.after(dateToday)){
 
 
+
         }
         else{
             throw new RuntimeException("Tarihler Uygun Değil.");
@@ -109,6 +113,32 @@ public class MaintenanceManager implements MaintenanceService {
         return date1;
 
     }
+
+    public void setMaintenanceStatement(CreateMaintenanceRequest createMaintenanceRequest) throws ParseException {
+        Maintenance maintenance = new Maintenance();
+        Statement statement = new Statement();
+        if(checkForAvailability(createMaintenanceRequest.getDateReturned())){
+
+
+           // statement.setName(createStatementRequest.getName());
+
+        }
+
+    }
+
+
+    public boolean checkForAvailability(String dateReturned) throws ParseException {
+        SimpleDateFormat formatter1=new SimpleDateFormat("dd.MM.yyyy");
+        Date date1=formatter1.parse(dateReturned);
+
+        if(date1.before(getTodayTime())){
+            return true;
+        }
+        else {
+            throw new RuntimeException("Araba bakımda.");
+        }
+    }
+
 
 
 }
