@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/api/brands")
 public class BrandsController {
 
-	private BrandService brandService; // burada somut nesne brandService'tir. O nedenle bu nesne autowired ile newlenir.
+	private BrandService brandService;
 
 	public BrandsController(BrandService brandService) {
 		super();
@@ -34,4 +34,3 @@ public class BrandsController {
 }
 
 
-//controllerde veritabanı nesnesi olmamalı (brand). Bu nedenle response-request pattern kullanılır
