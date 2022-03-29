@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface CarDao extends JpaRepository<Car,Integer>{
     List<Car> getByModelYear(double modelYear);
+
     List<Car> getByModelYearIn(List<Double> modelYears);
     List<Car> getByModelYearAndDailyPrice(double modelYear, double dailyPrice);
     List<Car> getByDescriptionContains(String description);

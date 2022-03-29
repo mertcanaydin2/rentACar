@@ -15,4 +15,6 @@ public interface DamageDao extends JpaRepository <Damage,Integer>{
 //  List<Damage> getByCarId(int id);
 //  List<Damage> getByCarIdIn(List<Integer> carId);
 
+    List<Damage> getAllByCarId(int carId);
+
 }

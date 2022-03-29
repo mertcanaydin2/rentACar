@@ -12,4 +12,5 @@ public interface CarService {
     List<ListCarDto> getAllByModelYear(double modelYear);
     List<ListCarDto> getAllPaged(int pageNo,int pageSize);
     List<ListCarDto> getAllSorted();
+
 }
