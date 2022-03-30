@@ -1,19 +1,26 @@
 package com.etiya.rentACar.business.requests.brandRequests;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-
-
+@Data //get ve set
+@AllArgsConstructor //
+@NoArgsConstructor //parametresiz const
 public class CreateBrandRequest {
-    @JsonIgnore
-    private int id;
-
-    private String name;
-
+	
+	@JsonIgnore
+	private int brandId;
+	
+	@NotNull
+	@Length(min = 2, max = 20)
+	private String brandName;
+    
+	
 }

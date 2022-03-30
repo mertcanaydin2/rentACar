@@ -1,5 +1,6 @@
 package com.etiya.rentACar.business.responses.colorResponses;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ListColorDto {
-    private int id;
-    private String name;
+	
+ private int colorId;
+ 
+ private String colorName;
 }
