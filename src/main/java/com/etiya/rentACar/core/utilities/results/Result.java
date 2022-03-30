@@ -1,8 +1,8 @@
 package com.etiya.rentACar.core.utilities.results;
 
 public class Result {
-   private boolean success; //işlem başarılı veya başarışırız
-   private String message; //işlem başarısız olursa mesaj ne başarılı olursa mesaj ne
+   private boolean success;
+   private String message;
 
    public Result(boolean success) {
 		this.success = success;
