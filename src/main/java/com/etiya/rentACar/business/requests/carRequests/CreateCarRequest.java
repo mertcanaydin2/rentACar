@@ -4,6 +4,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import com.etiya.rentACar.entities.CarStates;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,7 +22,7 @@ public class CreateCarRequest {
 	@JsonIgnore
 	private int carId;
 
-	@NotNull //burayı bana sağlamak durumundasın
+	@NotNull
 	@Min(1)
 	@Max(2000)
 	private double dailyPrice;
@@ -39,6 +40,9 @@ public class CreateCarRequest {
 
 	@NotNull
 	private int brandId;
+
+	@NotNull
+	private CarStates carStates;
 	
 
 	

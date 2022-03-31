@@ -11,6 +11,9 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateCustomerRequest {
+
+    private int customerId;
+
     @NotNull
     @Length(min = 2,max = 20)
     private String firstName;

@@ -10,8 +10,6 @@ import com.etiya.rentACar.entities.Brand;
 
 @Repository
 public interface BrandDao extends JpaRepository<Brand, Integer>{
-//integer class
-//brand operasyonları içerir
 	
    List<ListBrandDto> getByNameIgnoreCase(String name);
 

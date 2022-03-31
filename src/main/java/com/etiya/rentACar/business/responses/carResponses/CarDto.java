@@ -3,6 +3,7 @@ package com.etiya.rentACar.business.responses.carResponses;
 import java.time.LocalDate;
 
 
+import com.etiya.rentACar.entities.CarStates;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,7 @@ public class CarDto {
 
 	private String carDescription;
 	
-	//private CarStates states;
+	private CarStates states;
 
 
 }

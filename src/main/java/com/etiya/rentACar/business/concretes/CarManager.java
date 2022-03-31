@@ -26,6 +26,8 @@ import com.etiya.rentACar.core.utilities.mapping.ModelMapperService;
 import com.etiya.rentACar.dataAccess.abstracts.CarDao;
 import com.etiya.rentACar.entities.Car;
 
+import static com.etiya.rentACar.business.constants.BusinessMessages.CarCreateMessage.CAR_CREATED;
+
 @Service
 public class CarManager implements CarService {
 
@@ -40,17 +42,12 @@ public class CarManager implements CarService {
 	@Override
 	public Result add(CreateCarRequest createCarRequest) {
 
-		Car car = this.modelMapperService.forRequest()
-
-				.map(createCarRequest, Car.class);
+		Car car = this.modelMapperService.forRequest().map(createCarRequest, Car.class);
 
 		this.carDao.save(car);
 
-		return new SuccessResult("CAR_ADDED");
+		return new SuccessResult(CAR_CREATED);
 	}
-//if (createCarRequest.getDailyPrice() < 50)
-	//	throw new BusinessException("Fiyatı 50 Tl'den düşük araba kiralanamaz !");
-	//}
 
 	@Override
 	public Result update(UpdateCarRequest updateCarRequest) {

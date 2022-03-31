@@ -12,13 +12,12 @@ public interface CarDao extends JpaRepository<Car, Integer> {
     
 	List<Car> getByModelYear(int modelYear);
     
-    List<Car> getByModelYearIn(List<Integer> modelYears);//HANGİ YILLARI EKLERSEN ONA GÖRE GETİRİR
+    List<Car> getByModelYearIn(List<Integer> modelYears);
     
-    List<Car> getByModelYearAndDailyPrice(int modelYear, double dailyPrice);//model yılına göre günlük parası olanları gösterir
+    List<Car> getByModelYearAndDailyPrice(int modelYear, double dailyPrice);
     
-    List<Car> getByDescriptionContainsIgnoreCase(String description); //descriptiona göre listeleme yapar
+    List<Car> getByDescriptionContainsIgnoreCase(String description);
     
     Car getById(int id);
 
 }
-//getByModelYear diyip parametre verdi

@@ -38,14 +38,14 @@ public class Car {
 	@Column(name = "modelYear")
 	private int modelYear;
 
-	@Column(name = "car_state")
+	@Column(name = "carState")
 	private CarStates carState;
 	
 	@ManyToOne
-	@JoinColumn(name = "colorId")//renk id ye göre yapar
+	@JoinColumn(name = "colorId")
 	private Color color;
 	
-	@ManyToOne //diğerlerine bağlama
+	@ManyToOne
 	@JoinColumn(name="brandId")
 	private Brand brand;
 	

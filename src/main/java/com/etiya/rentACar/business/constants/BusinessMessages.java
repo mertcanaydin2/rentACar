@@ -39,4 +39,8 @@ public class BusinessMessages {
 		public static final String CUSTOMER = " Müşteri Kaydı Başarılı!";
 
 	}
+
+	public class CarCreateMessage{
+		public static final String CAR_CREATED = "Araba Kaydı Başarılı.";
+	}
 }
